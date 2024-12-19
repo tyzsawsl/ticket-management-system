@@ -1,0 +1,5 @@
+# 用户信息格式
+# 用户名, 密码, 用户类型
+admin, admin, admin
+user1, user1, user
+user2, user2, user

@@ -1,0 +1,7 @@
+user1	t1	a	b	c	1
+user1	t2	a	b	c	1
+user1	t3	a	b	c	1
+user2	t3	a	b	c	1
+user2	t2	a	b	c	1
+user2	t1	a	b	c	1
+user2	t3	a	b	c	1

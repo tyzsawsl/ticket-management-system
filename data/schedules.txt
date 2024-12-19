@@ -1,0 +1,3 @@
+t1	a	b	c	98
+t2	a	b	c	98
+t3	a	b	c	97
