@@ -22,13 +22,13 @@ ticket-management-system
 │   ├── admin.h         // 管理员功能接口
 │   ├── user.c          // 普通用户功能实现
 │   ├── user.h          // 普通用户功能接口
-│   ├── database.c      // 数据库操作实现
+│   ├── database.c      // 提供对用户和班次文件的读写操作，包括读取和追加写入用户及班次信息
 │   ├── database.h      // 数据库操作接口
 │   └── utils
 │       ├── auth.c      // 用户认证实现
 │       ├── auth.h      // 用户认证接口
 │       └── file_handler.h // 文件处理接口
-|       └── file_handler.c // 文件处理实现
+|       └── file_handler.c // 提供基础文件读写操作的函数，用于将字符串写入文件或从文件中读取内容
 ├── data
 │   ├── users.txt       // 用户信息存储
 │   └── schedules.txt   // 车次信息存储
