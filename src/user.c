@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-void query_schedule() {
+void query_schedule() { //查询班车信息
     FILE *file = fopen("data/schedules.txt", "r");
     if (file == NULL) {
         printf("暂无班次信息！\n");
@@ -18,7 +18,7 @@ void query_schedule() {
     fclose(file);
 }
 
-void bookTicket(const char* username, const char* scheduleId) {
+void bookTicket(const char* username, const char* scheduleId) { //预订车票
     (void)scheduleId;
     FILE *schedule_file = fopen("data/schedules.txt", "r");
     FILE *temp = fopen("data/schedules.temp", "w");
@@ -37,7 +37,7 @@ void bookTicket(const char* username, const char* scheduleId) {
     int seats;
     int found = 0;
 
-    while (fscanf(schedule_file, "%s\t%s\t%s\t%s\t%d\n", 
+    while (fscanf(schedule_file, "%s\t%s\t%s\t%s\t%d\n", //读取文件中的信息
            bus, dest, date, time, &seats) == 5) {
         if (strcmp(bus, target_bus) == 0) {
             found = 1;
@@ -79,7 +79,7 @@ void bookTicket(const char* username, const char* scheduleId) {
     }
 }
 
-void viewBookedTickets(const char* username) {
+void viewBookedTickets(const char* username) { //查看已订车票
     FILE *file = fopen("data/bookings.txt", "r");
     if (file == NULL) {
         printf("暂无订票记录！\n");
@@ -109,7 +109,7 @@ void viewBookedTickets(const char* username) {
     fclose(file);
 }
 
-void userMenu(const char* username) {
+void userMenu(const char* username) { //用户菜单
     int choice;
     do {
         printf("\n用户菜单\n");

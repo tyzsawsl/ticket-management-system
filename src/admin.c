@@ -3,8 +3,8 @@
 #include <stdio.h>
 #include <string.h>
 
-void add_schedule() {
-    Schedule newSchedule;
+void add_schedule() { //添加班次
+    Schedule newSchedule; //声明一个Schedule结构体变量用于储存新班次信息
     printf("\n添加新班次\n");
     printf("请输入车次名称: ");
     scanf("%s", newSchedule.busName);
@@ -17,7 +17,7 @@ void add_schedule() {
     printf("请输入座位数: ");
     scanf("%d", &newSchedule.availableSeats);
 
-    FILE *file = fopen("data/schedules.txt", "a");
+    FILE *file = fopen("data/schedules.txt", "a"); //以追加模式打开文件
     if (file != NULL) {
         fprintf(file, "%s\t%s\t%s\t%s\t%d\n", 
             newSchedule.busName, 
@@ -32,10 +32,10 @@ void add_schedule() {
     }
 }
 
-void modify_schedule() {
-    char target_bus[BUS_NAME_LENGTH];
-    FILE *file = fopen("data/schedules.txt", "r");
-    FILE *temp = fopen("data/schedules.temp", "w");
+void modify_schedule() { //修改班次
+    char target_bus[BUS_NAME_LENGTH]; //定位目标车次
+    FILE *file = fopen("data/schedules.txt", "r"); //打开文件
+    FILE *temp = fopen("data/schedules.temp", "w"); //创建临时文件
     
     if (file == NULL || temp == NULL) {
         printf("无法打开文件！\n");
@@ -49,7 +49,7 @@ void modify_schedule() {
     int seats;
     int found = 0;
 
-    while (fscanf(file, "%s\t%s\t%s\t%s\t%d\n", bus, dest, date, time, &seats) == 5) {
+    while (fscanf(file, "%s\t%s\t%s\t%s\t%d\n", bus, dest, date, time, &seats) == 5) { //读取文件中的信息
         if (strcmp(bus, target_bus) == 0) {
             found = 1;
             Schedule modified;
@@ -73,14 +73,14 @@ void modify_schedule() {
                 modified.destination,
                 modified.date,
                 modified.time,
-                modified.availableSeats);
+                modified.availableSeats); //将修改后的信息写入临时文件
         } else {
             fprintf(temp, "%s\t%s\t%s\t%s\t%d\n", bus, dest, date, time, seats);
         }
     }
 
     fclose(file);
-    fclose(temp);
+    fclose(temp); //关闭文件
 
     if (!found) {
         printf("未找到指定的车次！\n");
@@ -92,8 +92,8 @@ void modify_schedule() {
     }
 }
 
-void view_schedules() {
-    FILE *file = fopen("data/schedules.txt", "r");
+void view_schedules() { //查看班次
+    FILE *file = fopen("data/schedules.txt", "r"); //打开文件
     if (file == NULL) {
         printf("暂无班次信息！\n");
         return;
@@ -108,7 +108,7 @@ void view_schedules() {
     fclose(file);
 }
 
-void adminMenu() {
+void adminMenu() { //管理员菜单
     int choice;
     do {
         printf("\n管理员菜单\n");
